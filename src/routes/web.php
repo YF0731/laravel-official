@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Log\Logger;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,23 @@ use Symfony\Component\HttpKernel\Log\Logger;
 */
 
 Route::get('/', function () {
-    logger('welcome route.');
     return view('welcome');
+});
+
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
+
+Route::name('admin.')->group(function () {
+    Route::get('/users', function () {
+        return 'hello world';
+    })->name('users');
+});
+
+Route::get('/here', function () {
+    return route('admin.users');
+});
+
+Route::get('/users/{user}', function (User $user) {
+    return $user->email;
 });
