@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\FlightController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Tests\Feature\ExampleTest;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('refresh', [ExampleTest::class, 'test_the_application_returns_a_successful_response']);
+
+Route::get('/flight', [FlightController::class, 'index']);
+Route::get('/post', [PostController::class, 'index']);
