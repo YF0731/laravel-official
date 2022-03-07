@@ -16,16 +16,35 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::make();
-        $post->title = 'foo';
-        $post->save();
+        // $post = Post::make();
+        // $post->title = 'foo';
+        // $post->save();
 
-        $comment = Comment::make();
-        $comment->comment = 'bar';
+        // $comment = Comment::make();
+        // $comment->comment = 'bar';
 
-        $post->comments()->save($comment);
+        // $post->comments()->save($comment);
 
-        echo $post->comments;
+        // echo $post->comments;
+
+        function main(int $num1, int $num2): int
+        {
+            $arr = [];
+
+            for ($i = 1; $i <= $num1; $i++) {
+                if ($num1 % $i !== 0 || $num2 % $i !== 0) {
+                    continue;
+                }
+
+                array_push($arr, $i);
+            }
+
+            return max($arr);
+        }
+
+        $result = main(200, 50);
+
+        dd($result);
     }
 
     /**
